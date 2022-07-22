@@ -17,9 +17,15 @@
 		</select>
 		<input type = "number" id = "num2" value = "4">
 		= <span id = "result"></span>
+		<p><button id = "calculate">Calculate</button></p>
 	</p>
 
 <script>
+
+$("#calculate").on("click", calculate);
+
+calculate();
+
 function calculate(){
 	let num1 = $("#num1").val();
 	let num2 = $("#num2").val();
@@ -35,7 +41,7 @@ function calculate(){
 		dataType:"json",
 		type:"GET"
 	}).then(res=>{
-		console.log(res);
+		$("#result").text(res.result);
 	});
 }
 

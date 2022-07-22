@@ -10,7 +10,7 @@ app.get("/", (req,res)=>{
 });
 
 app.get("/math", (req,res)=>{
-	let query = res.query;
+	let query = req.query;
 	let num1 = parseFloat(query.num1);
 	let num2 = parseFloat(query.num2);
 	let operator = query.operator;
