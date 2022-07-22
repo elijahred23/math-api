@@ -18,5 +18,28 @@
 		<input type = "number" id = "num2" value = "4">
 		= <span id = "result"></span>
 	</p>
+
+<script>
+function calculate(){
+	let num1 = $("#num1").val();
+	let num2 = ${"#num2").val();
+	let operator = $("#operator").val();
+
+	$.ajax({
+		url: "/math",
+		data: {
+			num1: parseFloat(num1),
+			num2: parseFloat(num2),
+			operator: operator
+		},
+		dataType:"json",
+		type:"GET"
+	}).then(res=>{
+		console.log(res);
+	});
+}
+
+</script>
 </body>
 </html>
+
