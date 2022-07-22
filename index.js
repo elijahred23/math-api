@@ -15,6 +15,7 @@ app.get("/math", (req,res)=>{
 	let num2 = parseFloat(query.num2);
 	let operator = query.operator;
 	let result;
+
 	switch(operator){
 		case '+': result = num1+num2;
 			break;
