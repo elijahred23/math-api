@@ -9,6 +9,10 @@ app.get("/", (req,res)=>{
 	res.render("index");
 });
 
+app.get("/style.css", (req,res)=>{
+	res.sendFile(__dirname + "/css/style.css");
+});
+
 app.get("/math", (req,res)=>{
 	let query = req.query;
 	let num1 = parseFloat(query.num1);
