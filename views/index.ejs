@@ -2,10 +2,12 @@
 <html>
 <head>
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel = "stylesheet" type = "text/css" href = "/style.css">
 <title>Math API</title>
 </head>
 
 <body>
+	<div class = "container">
 	<h1>Mathematics API</h1>
 	<p>
 		<input type = "number" id = "num1" value = "2">
@@ -19,7 +21,7 @@
 		= <span id = "result"></span>
 		<p><button id = "calculate">Calculate</button></p>
 	</p>
-
+	</div>
 <script>
 
 $("#calculate").on("click", calculate);
