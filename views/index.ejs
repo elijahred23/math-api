@@ -26,9 +26,6 @@
         </p>
     </div>
     <script>
-        $("#calculate").on("click", calculate);
-        calculate();
-
         function calculate() {
             let num1 = $("#num1").val();
             let num2 = $("#num2").val();
@@ -50,6 +47,16 @@
                 $("#result").text(res.result);
             });
         }
+
+        function enterPressed(e) {
+            if (e.keyCode == 13)
+                calculate();
+        }
+        $("#num1").on("keydown", enterPressed);
+        $("#num2").on("keydown", enterPressed);
+
+        $("#calculate").on("click", calculate);
+        calculate();
     </script>
 </body>
 
