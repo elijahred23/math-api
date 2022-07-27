@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel = "stylesheet" type = "text/css" href = "/style.css">
-<title>Math API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>Math API</title>
 </head>
 
 <body>
-	<div class = "container">
-	<h1>Mathematics API</h1>
-	<p>
-		<input type = "number" id = "num1" value = "2">
-		<select id = "operator">
+    <div class="container">
+        <h1>Mathematics API</h1>
+        <p>
+            <input type="number" id="num1" value="2">
+            <select id="operator">
 		<option value = "+">+</option>
 		<option value = "-">-</option>
 		<option value = "*">*</option>
 		<option value = "/">/</option>
 		</select>
-		<input type = "number" id = "num2" value = "4">
-		= <span id = "result"></span>
-		<p><button id = "calculate">Calculate</button></p>
-	</p>
-	</div>
-<script>
+            <input type="number" id="num2" value="4"> = <span id="result"></span>
+            <p><button id="calculate">Calculate</button></p>
+        </p>
+        <p>
+            <span id="errors"></span>
+        </p>
+    </div>
+    <script>
+        $("#calculate").on("click", calculate);
+        calculate();
 
-$("#calculate").on("click", calculate);
-
-calculate();
-
-function calculate(){
-	let num1 = $("#num1").val();
-	let num2 = $("#num2").val();
-	let operator = $("#operator").val();
-
-	$.ajax({
-		url: "/math",
-		data: {
-			num1: parseFloat(num1),
-			num2: parseFloat(num2),
-			operator: operator
-		},
-		dataType:"json",
-		type:"GET"
-	}).then(res=>{
-		$("#result").text(res.result);
-	});
-}
-
-</script>
+        function calculate() {
+            let num1 = $("#num1").val();
+            let num2 = $("#num2").val();
+            let operator = $("#operator").val();
+            $("#errors").text(" ");
+            if (num1 == "" || num2 == "") {
+                $("#errors").text("Forgot to enter input 1 or input 2 ");
+            }
+            $.ajax({
+                url: "/math",
+                data: {
+                    num1: parseFloat(num1),
+                    num2: parseFloat(num2),
+                    operator: operator
+                },
+                dataType: "json",
+                type: "GET"
+            }).then(res => {
+                $("#result").text(res.result);
+            });
+        }
+    </script>
 </body>
-</html>
 
+</html>
